@@ -1,0 +1,36 @@
+<div>
+  <div class="page-header">
+    <h1>Список книг:</h1>
+  </div>
+  <button type="button" class="btn btn-primary" [routerLink]="['/book/edit']">Добавить</button>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Название</th>
+          <th>Описание</th>
+          <th>Изменить</th>
+          <th>Удалить</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <th scope="row">{{book.bookId}}</th>
+          <td><b>{{book.title}}</b></td>
+          <td>{{book.description}}</td>
+          <td>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-primary" routerLink="/book/{{book.bookId}}/edit">Изменить</button>
+            </div>
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-danger" (click)="deleteBook(book.bookId)">Удалить</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
